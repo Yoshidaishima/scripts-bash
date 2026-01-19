@@ -1,0 +1,2 @@
+export LIB="$(cd "$(dirname "$0")" && pwd)/lib/"
+

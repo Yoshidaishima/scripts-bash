@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+source "$(cd "$(dirname "$0")" && pwd)/lib/env"
+
+ERROR="\nERROR: Invalid usage"
+USAGE=$(cat << 'EOF'
+
+Usage:
+$0 <file>
+EOF
+)
+
+INVALID=false
+REQ=1
+
+if [ "$#" -ne $REQ ]; then INVALID=true; fi
+if [ -f "$1" ]; then INVALID=true; fi
+
+if [[ $INVALID == true ]]; then
+  echo -e $ERROR
+  echo $USAGE
+  echo ""
+  exit 1
+fi
+
+if [ -f "$1" ]; then
+  gpg -c "$1"
+else
+  echo "File not found"
+fi

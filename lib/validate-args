@@ -1,0 +1,8 @@
+#!/bin/bash
+expected=$1
+shift
+if [ $# -eq $expected ]; then
+  exit 0
+else
+  exit 1
+fi
