@@ -1,0 +1,4 @@
+(zcat $(ls -tr /var/log/apt/history.log*.gz); cat /var/log/apt/history.log) 2>/dev/null | \
+  grep -E '^Commandline:' | \
+  grep -E 'apt(-get)? install ' | \
+  sed 's/^Commandline: //; s/ apt-get install / /; s/ apt install / /'
